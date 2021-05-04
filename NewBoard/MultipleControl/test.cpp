@@ -48,8 +48,8 @@ int main() {
         wiringPiI2CWriteReg8(Expander2_fd, 0x01, 0x00);
     }
 
-    int times = 0;
-    while (times != 9){
+    int count = 0;
+    while (count != 9){
         wiringPiI2CWriteReg8(Expander1_fd, 0x14, 0xff);
         wiringPiI2CWriteReg8(Expander2_fd, 0x14, 0xff);
         wiringPiI2CWriteReg8(Expander1_fd, 0x15, 0x00);
@@ -63,7 +63,7 @@ int main() {
         wiringPiI2CWriteReg8(Expander2_fd, 0x15, 0xff);
         std::cout << "off" << std::endl;
         sleep(1);
-        times ++;
+        count ++;
     }
     
 }
