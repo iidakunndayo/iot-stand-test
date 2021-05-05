@@ -33,7 +33,7 @@ void LCDSetup(){
 }
 
 int main() {
-    if (LCD_fd == -1 && Expander1_fd == -1 && Expander2_fd == -1){
+    if (LCD_fd == -1 || Expander1_fd == -1 || Expander2_fd == -1){
         std::cout << "I2C Error!!" << std::endl;
         return -1;
     } else {
