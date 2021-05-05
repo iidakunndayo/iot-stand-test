@@ -57,5 +57,7 @@ int main() {
         digitalWrite(relay_off, HIGH);
         std::cout << "off" << std::endl;
         sleep(1);
+
+        count ++;
     }
 }
