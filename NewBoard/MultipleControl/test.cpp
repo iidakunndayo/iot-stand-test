@@ -35,13 +35,14 @@ void LCDSetup(){
 int main() {
     if (LCD_fd == -1 || Expander1_fd == -1 || Expander2_fd == -1){
         std::cout << "I2C Error!!" << std::endl;
-        return -1;
+        return 1;
     } else {
         wiringPiSetup();                    //GPIOのアクティベーション
         pinMode(LCD_backlight, OUTPUT);     //LCDのバックライトピンの出力設定
         pinMode(LCD_reset, OUTPUT);         //LCDの物理リセットピンの出力設定
         digitalWrite(LCD_backlight ,HIGH);  //LCDのバックライトの点灯
         digitalWrite(LCD_reset, HIGH);      //LCDの物理リセットのピンをHIGHに設定(LOWでリセット)
+        LCDSetup();
         wiringPiI2CWriteReg8(Expander1_fd, 0x00, 0x00);
         wiringPiI2CWriteReg8(Expander1_fd, 0x01, 0x00);
         wiringPiI2CWriteReg8(Expander2_fd, 0x00, 0x00);
@@ -49,7 +50,7 @@ int main() {
     }
 
     int count = 0;
-    while (count != 9){
+    while (count < 10){
         wiringPiI2CWriteReg8(Expander1_fd, 0x14, 0xff);
         wiringPiI2CWriteReg8(Expander2_fd, 0x14, 0xff);
         wiringPiI2CWriteReg8(Expander1_fd, 0x15, 0x00);
