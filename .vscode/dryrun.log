@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/pi/iot-stand-test'
+g++ NewBoard/MultipleControl/test.cpp -Wall -o NewBoard/MultipleControl/test.out -lwiringPi
+make: Leaving directory '/home/pi/iot-stand-test'
+ 
